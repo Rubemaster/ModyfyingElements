@@ -13,7 +13,7 @@ export class App extends React.Component {
         transformOrigin: "top left",
         transform: "rotate(45deg)",
         width: 100
-      }
+      } //Hot shit
     };
     this.line = this.line.bind(this);
     this.line(0, 0, 100, 100);
