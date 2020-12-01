@@ -2,7 +2,7 @@ import React from "react";
 import { SideBar } from "./Elements/SideBar/SideBar.js";
 import { DrawArea } from "./Elements/DrawArea/DrawArea.js";
 
-const DocumentStyle = {
+const documentStyle = {
   position: "absolute",
   top: 0,
   bottom: 0,
@@ -10,15 +10,13 @@ const DocumentStyle = {
   right: 0,
   display: "flex"
 };
-export class App extends React.Component {
-  render() {
-    return (
-      <>
-        <div style={DocumentStyle}>
-          <DrawArea />
-          <SideBar />
-        </div>
-      </>
-    );
-  }
-}
+export const App = () => {
+  return (
+    <>
+      <div style={documentStyle}>
+        <DrawArea />
+        <SideBar />
+      </div>
+    </>
+  );
+};
