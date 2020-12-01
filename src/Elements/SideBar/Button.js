@@ -1,33 +1,61 @@
-import React, { useState, useEffect } from "react";
-
-const ButtonStyle = (changes) =>
-  Object.assign(
-    {
-      flexGrow: 1,
-      margin: 10,
-      height: 40
-    },
-    changes
-  );
-export function Button() {
+import React, { useState, useEffect, useRef } from "react";
+const buttonStyle = {
+  flexGrow: 1,
+  alignItems: "center",
+  display: "flex",
+  paddingRight: 5,
+  paddingLeft: 5,
+  borderBottom: "1px solid black",
+  width: "100%"
+};
+const textStyle = {
+  paddingTop: 1,
+  paddingBottom: 1,
+  flexGrow: 1,
+  display: "flex",
+  flexWrap: "wrap",
+  paddingRight: 10
+};
+export const Button = (props) => {
   // Declare a new state variable, which we'll call "count"
 
   const [pressed, setPressed] = useState(false);
-  this.button = React.createRef();
+  const [over, setOver] = useState(false);
+  const button = useRef(0);
   useEffect(() => {
-    this.button.current.addEventListener("click", () => {
-      console.log("down");
+    button.current.addEventListener("mousedown", () => {
       setPressed(true);
     });
-    this.button.current.addEventListener("mouseup", () => {
+    button.current.addEventListener("mouseup", () => {
       setPressed(false);
     });
-  });
+    button.current.addEventListener("mouseover", () => {
+      setOver(true);
+    });
+    button.current.addEventListener("mouseout", () => {
+      setOver(false);
+    });
+  }, []);
   return (
     <>
-      <button ref={this.button} style={ButtonStyle()}>
-        {pressed ? "what" : "now"}
-      </button>
+      <div
+        onClick={props.onClick}
+        ref={button}
+        style={Object.assign(
+          {},
+          buttonStyle,
+          pressed
+            ? {
+                background: "RGB(27, 38, 59)",
+                color: "white"
+              }
+            : {},
+          over ? { paddingTop: 10, paddingBottom: 10 } : {}
+        )}
+      >
+        <div style={textStyle}>{props.children} </div>
+        {">"}
+      </div>
     </>
   );
-}
+};

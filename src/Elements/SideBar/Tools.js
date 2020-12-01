@@ -4,5 +4,11 @@ export const Tools = {
     Circle: () => {},
     Line: () => {},
     Doors: () => {}
-  }
+  },
+  Measurements_And_Similair_Precision_Tools: {},
+  Components: {},
+  Advanced: {},
+  Settings: {},
+  Archive: {},
+  Print: {}
 };
